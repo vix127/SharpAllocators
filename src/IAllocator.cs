@@ -1,6 +1,4 @@
-﻿using System.Runtime.InteropServices;
-
-namespace SharpAllocators;
+﻿namespace SharpAllocators;
 
 public unsafe interface IAllocator
 {
