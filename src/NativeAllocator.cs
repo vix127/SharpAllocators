@@ -14,7 +14,7 @@ namespace SharpAllocators
             NativeMemory.Free(pointer);
         }
 
-        public T* Realloc<T>(T* pointer, long count) where T : unmanaged
+        public T* Reallocate<T>(T* pointer, long count) where T : unmanaged
         {
             return (T*)NativeMemory.Realloc(pointer, (nuint)count);
         }
