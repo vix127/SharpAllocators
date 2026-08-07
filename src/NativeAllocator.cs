@@ -9,9 +9,9 @@ namespace SharpAllocators;
 public readonly unsafe struct NativeAllocator : IAllocator
 {
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public T* Allocate<T>(long count) where T : unmanaged
+    public T* Allocate<T>(nuint elementCount) where T : unmanaged
     {
-        return (T*)NativeMemory.Alloc((nuint)(count * sizeof(T)));
+        return (T*)NativeMemory.Alloc(elementCount * (nuint)sizeof(T));
     }
 
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
@@ -21,8 +21,8 @@ public readonly unsafe struct NativeAllocator : IAllocator
     }
 
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public T* Reallocate<T>(T* pointer, long count) where T : unmanaged
+    public T* Reallocate<T>(T* pointer, nuint elementCount) where T : unmanaged
     {
-        return (T*)NativeMemory.Realloc(pointer, (nuint)count);
+        return (T*)NativeMemory.Realloc(pointer, elementCount);
     }
 }
