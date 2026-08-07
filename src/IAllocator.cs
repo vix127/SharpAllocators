@@ -5,7 +5,11 @@ namespace SharpAllocators;
 
 public unsafe interface IAllocator
 {
-    public T* Allocate<T>(nuint elementCount) where T : unmanaged;
-    public void Free<T>(T* pointer) where T : unmanaged;
-    public T* Reallocate<T>(T* pointer, nuint elementCount) where T : unmanaged;
+    public MemorySlice<T> Allocate<T>(nuint elementCount) where T : unmanaged;
+    public void Free<T>(MemorySlice<T> memorySlice) where T : unmanaged;
+    public MemorySlice<T> Reallocate<T>(T* pointer, nuint elementCount) where T : unmanaged;
+    public MemorySlice<T> Reallocate<T>(MemorySlice<T> memorySlice) where T : unmanaged
+    {
+        return Reallocate(memorySlice.Pointer, memorySlice.Length);
+    }
 }
