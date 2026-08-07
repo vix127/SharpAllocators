@@ -6,7 +6,7 @@ namespace SharpAllocators
     {
         public T* Allocate<T>(long count) where T : unmanaged
         {
-            return (T*)NativeMemory.Alloc((nuint)count);
+            return (T*)NativeMemory.Alloc((nuint)(count * sizeof(T)));
         }
 
         public void Free<T>(T* pointer) where T : unmanaged
