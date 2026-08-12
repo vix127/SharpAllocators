@@ -1,4 +1,4 @@
-﻿// Copyright (c) 2026 Viktor Stojanović. All rights reserved.
+// Copyright (c) 2026 Viktor Stojanović. All rights reserved.
 // Licensed under the MIT License. See LICENSE.txt in the project root for license information.
 
 using System.Runtime.CompilerServices;
@@ -17,16 +17,16 @@ public readonly unsafe struct NativeAllocator : IAllocator
     }
 
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public void Free<T>(MemorySlice<T> memorySlice) where T : unmanaged
+    public void Free<T>(T* pointer) where T : unmanaged
     {
-        NativeMemory.Free(memorySlice.Pointer);
+        NativeMemory.Free(pointer);
     }
 
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public MemorySlice<T> Reallocate<T>(T* pointer, nuint elementCount) where T : unmanaged
+    public MemorySlice<T> Reallocate<T>(T* pointer, nuint newLength) where T : unmanaged
     {
-        var reallocatedPointer = (T*)NativeMemory.Realloc(pointer, elementCount);
+        var reallocatedPointer = (T*)NativeMemory.Realloc(pointer, newLength);
 
-        return new(reallocatedPointer, elementCount);
+        return new(reallocatedPointer, newLength);
     }
 }
