@@ -3,7 +3,8 @@
 
 namespace SharpAllocators;
 
-public readonly unsafe struct MemorySlice<T> where T : unmanaged
+public readonly unsafe struct MemorySlice<T> : IMemorySlice<T, nuint>
+    where T : unmanaged
 {
     public T* Pointer { get; }
     public nuint Length { get; }
