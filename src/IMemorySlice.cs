@@ -3,10 +3,10 @@
 
 namespace SharpAllocators;
 
-public unsafe interface IMemorySlice<TPointer, TLength>
-    where TPointer : unmanaged
+public unsafe interface IMemorySlice<TElement, TLength>
+    where TElement : unmanaged
     where TLength  : unmanaged
 {
-    public TPointer* Pointer { get; }
+    public TElement* Pointer { get; }
     public TLength   Length { get; }
 }
