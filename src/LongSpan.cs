@@ -75,17 +75,17 @@ public readonly ref struct LongSpan<T>
     /// <exception cref="IndexOutOfRangeException">
     /// Thrown when index less than 0 or index greater than or equal to Length
     /// </exception>
-    public ref T this[int index]
+    public ref T this[long index]
     {
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         get
         {
-            if ((uint)index >= (uint)_length)
+            if ((ulong)index >= (ulong)_length)
             {
                 throw new IndexOutOfRangeException("Index cannot be less then zero or greater then or equal to length");
             }
 
-            return ref Unsafe.Add(ref _reference, (nint)(uint)index);
+            return ref Unsafe.Add(ref _reference, (nint)index); // right now this can cause UB on 32 bit systems
         }
     }
 }
