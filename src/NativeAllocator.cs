@@ -25,7 +25,7 @@ public readonly unsafe struct NativeAllocator : IAllocator
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
     public MemorySlice<T> Reallocate<T>(T* pointer, nuint newLength) where T : unmanaged
     {
-        var reallocatedPointer = (T*)NativeMemory.Realloc(pointer, newLength);
+        var reallocatedPointer = (T*)NativeMemory.Realloc(pointer, newLength * (nuint)sizeof(T));
 
         return new(reallocatedPointer, newLength);
     }
