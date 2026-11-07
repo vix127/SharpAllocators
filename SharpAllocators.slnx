@@ -5,4 +5,7 @@
   <Folder Name="/src/">
     <Project Path="src/SharpAllocators.csproj" />
   </Folder>
+  <Folder Name="/tests/">
+    <Project Path="tests/SharpAllocators.Tests/SharpAllocators.Tests.csproj" />
+  </Folder>
 </Solution>
