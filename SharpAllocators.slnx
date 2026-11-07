@@ -8,4 +8,7 @@
   <Folder Name="/tests/">
     <Project Path="tests/SharpAllocators.Tests/SharpAllocators.Tests.csproj" />
   </Folder>
+  <Folder Name="/examples/">
+    <Project Path="examples/SharpAllocators.Examples/SharpAllocators.Examples.csproj" />
+  </Folder>
 </Solution>
