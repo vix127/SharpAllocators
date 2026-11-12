@@ -4,7 +4,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Project Overview
 
-**SharpAllocators** is a .NET library providing low-level memory allocation primitives with support for both managed and native memory. It targets **.NET 10.0** and uses unsafe code (`AllowUnsafeBlocks=true`).
+**SharpAllocators** is a .NET library providing low-level memory allocation primitives with support for both managed and native memory. It targets **.NET 11.0** and uses unsafe code (`AllowUnsafeBlocks=true`).
 
 ## Architecture
 
@@ -42,7 +42,7 @@ dotnet test
 
 ## Development Notes
 
-- **Target Framework**: net10.0 (configured in `src/SharpAllocators.csproj`)
+- **Target Framework**: net11.0 (configured in `src/SharpAllocators.csproj`)
 - **Unsafe code**: Required — project has `<AllowUnsafeBlocks>true</AllowUnsafeBlocks>`
 - **Nullable**: Enabled (`<Nullable>enable</Nullable>`)
 - **ImplicitUsings**: Disabled (`<ImplicitUsings>disable</ImplicitUsings>`)
@@ -50,7 +50,7 @@ dotnet test
 ## CI/CD
 
 GitHub Actions workflow (`.github/workflows/dotnet.yml`) runs on push/PR to main:
-1. Setup .NET 10.0.x
+1. Setup .NET 11.0.x
 2. `dotnet restore`
 3. `dotnet build --no-restore`
 4. `dotnet test --no-build --verbosity normal`
@@ -64,7 +64,7 @@ SharpAllocators/
 ├── README.md                      # Minimal readme
 ├── LICENSE                        # MIT License
 └── src/
-    ├── SharpAllocators.csproj     # Project config (net10.0, unsafe, nullable)
+    ├── SharpAllocators.csproj     # Project config (net11.0, unsafe, nullable)
     ├── IAllocator.cs              # Allocator interface
     ├── IMemorySlice.cs            # Memory slice interface
     ├── LongSpan.cs                # Ref struct for memory spans
